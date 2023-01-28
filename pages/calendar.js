@@ -1,4 +1,4 @@
-import Header from "@/Components/Header.js";
+import Header from "@/Components/header.js";
 
 export default function calendar() {
   return (

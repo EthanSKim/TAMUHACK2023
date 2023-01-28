@@ -10,6 +10,7 @@ import Router, { useRouter } from "next/router";
  */
 export default function NavBar() {
   const router = useRouter();
+
   return (
     <nav className="navbar navbar-expand-xxl bg-light py-2 px-4">
       <div className="container-fluid">
@@ -29,24 +30,24 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
             <li className="nav-item">
-              <a className="nav-link active" href="/">
+              <a className="nav-link active fs-5" href="/">
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/diagnosis">
+              <a className="nav-link active fs-5" href="/diagnosis">
                 Diagnosis
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/calendar">
+              <a className="nav-link active fs-5" href="/calendar">
                 Calendar
               </a>
             </li>
           </ul>
-          <button className="btn btn-outline-dark" type="submit">
+          <a className="btn btn-outline-dark fs-5" href="/login">
             Login
-          </button>
+          </a>
         </div>
       </div>
     </nav>

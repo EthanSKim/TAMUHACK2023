@@ -6,45 +6,49 @@ import Router, { useRouter } from "next/router";
  * NavBar:
  *   post:
  *     description: Creates a navbar for all users to see.
- *     summary: Creates a navbar for all users to see.   
+ *     summary: Creates a navbar for all users to see.
  */
 export default function NavBar() {
-
-    // Home | Menu | Login | Location
-    const router = useRouter();
-    return (
-        <nav className="flex">
-            <div>website</div>
-            <div className="d-flex justify-content-around">
-                <Link href="/">
-                    Home
-                </Link>
-
-                <Link href="/diagnosis">
-                    Diagnosis
-                </Link>
-
-                <Link href="/calendar">
-                    Calendar
-                </Link>
-            </div>
-            <button>Login</button>
-
-
-            <style jsx>{`
-                nav {
-                    margin: 1rem 0;
-                    text-align: center;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                }
-                img {
-                    height: 14vh
-                }
-            `}
-            </style>
-        </nav>
-    )
+  const router = useRouter();
+  return (
+    <nav className="navbar navbar-expand-xxl bg-light py-2 px-4">
+      <div className="container-fluid">
+        <a className="navbar-brand fs-3" href="#">
+          Navbar
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+            <li className="nav-item">
+              <a className="nav-link active" href="/">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/diagnosis">
+                Diagnosis
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/calendar">
+                Calendar
+              </a>
+            </li>
+          </ul>
+          <button className="btn btn-outline-dark" type="submit">
+            Login
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
 }
-

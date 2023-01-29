@@ -15,7 +15,7 @@ export default function diagnosis() {
       date: ["1-28-2023", "2-15-2023"],
     },
     {
-      name: "Broken Femur",
+      name: "Knee Injury",
       treatments: [
         ["1", "Hydrocodone", "Up to twice per day as needed"],
         ["2", "Change Bandages", "Once per day"],

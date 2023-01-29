@@ -2,7 +2,6 @@ const now = new Date();
 
 export default [
   {
-    id: 15,
     title: "Amoxicillin",
     start: now,
     end: now
@@ -22,8 +21,8 @@ export default [
   {
     id: 1,
     title: "Amoxicillin",
-    start: new Date(2023, 1, 30),
-    end: new Date(2023, 1, 30)
+    start: new Date("2023-01-29"),
+    end: new Date("2023-01-29")
   },
   {
     id: 2,

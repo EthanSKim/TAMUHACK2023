@@ -9,7 +9,7 @@ const DiseaseSchema = new mongoose.Schema({
     start_date: Date,
     end_date: Date,
     comments: [String],
-    user_id: Number
+    user_id: String
 });
 
 const Disease = mongoose.model('Disease', DiseaseSchema); //convert to model named Disease

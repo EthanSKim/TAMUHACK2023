@@ -3,7 +3,7 @@ const mongoose = require("mongoose"); //import mongoose
 // Treatment schema
 const TreatmentSchema = new mongoose.Schema({
     name: String,
-    disease_id: Number,
+    disease_id: String,
     uses: String,
     dosage: String,
     frequency: String,

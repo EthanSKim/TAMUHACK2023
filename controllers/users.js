@@ -14,7 +14,7 @@ const getAllUsers = (req, res, next) => {
 //POST '/users'
 const newUsers = (req, res) => {
     //check if the users _id already exists in db
-    Users.findOne({ _id: req.body._id }, (err, data) => {
+    Users.findOne({ email: req.body.email }, (err, data) => {
         //if users not in db, add it
         if (!data) {
             //create a new users object using the Users model and req.body

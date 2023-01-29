@@ -5,12 +5,14 @@ const express = require ('express');
 const diseaseRoutes = require('./routes/disease'); // import the routes
 const treatmentRoutes = require('./routes/treatment'); // import the routes
 const usersRoutes = require('./routes/users'); // import the routes
+const eventsRoutes = require('./routes/events'); // import the routes
 const app = express();
 
 app.use(express.json());
 app.use('/', diseaseRoutes); 
 app.use('/', treatmentRoutes); 
 app.use('/', usersRoutes); 
+app.use('/', eventsRoutes); 
 
 // database conn
 mongoose.connect(

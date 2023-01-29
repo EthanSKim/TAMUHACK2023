@@ -45,9 +45,13 @@ export default function NavBar() {
               </a>
             </li>
           </ul>
-          <a className="btn btn-outline-dark fs-5" href="/login">
-            Login
-          </a>
+          {router.pathname === "/login" ? (
+            ""
+          ) : (
+            <a className="btn btn-outline-dark fs-5" href="/login">
+              Login
+            </a>
+          )}
         </div>
       </div>
     </nav>

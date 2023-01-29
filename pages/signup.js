@@ -1,9 +1,9 @@
-export default function login() {
+export default function signup() {
   return (
     <div className="w-25 mx-auto" style={{ marginTop: "10em" }}>
       <main className="form-signin w-100 m-auto text-center">
         <form>
-          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+          <h1 className="h3 mb-3 fw-normal">Please create an account</h1>
 
           <div className="form-floating mb-3">
             <input
@@ -21,19 +21,22 @@ export default function login() {
               placeholder="Password"></input>
             <label for="floatingPassword">Password</label>
           </div>
+          <div className="form-floating mb-3">
+            <input
+              type="password"
+              className="form-control"
+              id="floatingPassword"
+              placeholder="Password"></input>
+            <label for="floatingPassword">Confirm Password</label>
+          </div>
 
-          <div className="mb-3 d-flex justify-content-center align-items-center">
-            <div className="checkbox">
-              <label className="">
-                <input type="checkbox" value="remember-me"></input> Remember me
-              </label>
-            </div>
-            <a className="btn btn-link fs-5 px-4" href="/signup">
-              Create an Account
-            </a>
+          <div className="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"></input> Remember me
+            </label>
           </div>
           <button className="btn btn-lg btn-primary px-4" type="submit">
-            Sign in
+            Sign up
           </button>
         </form>
       </main>

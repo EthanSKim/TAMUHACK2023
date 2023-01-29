@@ -1,8 +1,30 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+const USER_KEY = "@user";
+
 export default function login() {
+  const router = useRouter();
+  const [user, setUser] = useState("guest");
+  const userLogin = (e) => {
+    setUser(document.getElementById("floatingInput").value);
+    localStorage.setItem(USER_KEY, document.getElementById("floatingInput").value);
+  }
+
+  const loadUser = () => {
+    const user = localStorage.getItem(USER_KEY);
+    if(user !== null) {
+      router.push("/");
+    }
+  }
+
+  useEffect(() => {
+    loadUser();
+  }, [])
   return (
     <div className="w-25 mx-auto" style={{ marginTop: "10em" }}>
       <main className="form-signin w-100 m-auto text-center">
-        <form>
+        <form onSubmit={userLogin}>
           <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
           <div className="form-floating mb-3">

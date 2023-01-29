@@ -56,11 +56,11 @@ const deleteAllTreatment = (req, res, next) => {
     })
 };
 
-//GET '/treatment/:_id'
+//GET '/treatment/:name'
 const getOneTreatment = (req, res, next) => {
-    let _id = req.params._id;
+    let name = req.params.name;
     
-    Treatment.findOne({_id:_id}, (err, data)=> {
+    Treatment.findOne({name:name}, (err, data)=> {
         if (err || !data){
             return res.json({Error: err});
         }

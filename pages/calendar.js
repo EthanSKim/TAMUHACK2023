@@ -1,3 +1,4 @@
+import CalendarComponent from "@/Components/CalendarComponent";
 import React, { useState, useEffect } from "react";
 
 export default function calendar() {
@@ -41,7 +42,7 @@ export default function calendar() {
 
   return (
     <div className="row m-0">
-      <div className="col-8">calendar</div>
+      <div className="col-8"><CalendarComponent/></div>
       <div className="col-4">
         <div className="w-75 m-5">
           <h4 className="w-75">Daily Treatment</h4>

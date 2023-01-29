@@ -1,12 +1,6 @@
 //import disease model
 const Disease = require('../models/disease');
 
-//import treatment model
-const Treatment = require('../models/treatment');
-
-//import users model
-const Users = require('../models/users');
-
 //GET '/disease'
 const getAllDisease = (req, res, next) => {
     Disease.find({}, (err, data)=> {
@@ -17,7 +11,7 @@ const getAllDisease = (req, res, next) => {
     })
 };
 
-//POST '/disease/:user_id'
+//POST '/disease'
 const newDisease = (req, res) => {
     let user_id = req.params.user_id;
 
@@ -34,17 +28,17 @@ const newDisease = (req, res) => {
                 start_date: req.body.start_date,
                 end_date: req.body.end_date,
                 comments: req.body.comments,
-                user_id: user_id
+                user_id: req.body.user_id
             })
-
             // save this object to database
             newDisease.save((err, data)=>{
                 if(err){
                     console.log(data._id);
                     return res.json({Error: err});
-                } 
+                }
                 return res.json(data);
             })
+
         //if there's an error or the disease is in db, return a message         
         }else{
             if(err){
@@ -68,7 +62,7 @@ const deleteAllDisease = (req, res, next) => {
 //GET '/disease/:_id'
 const getOneDisease = (req, res, next) => {
     let _id = req.params._id;
-    
+    // Note, this is by user ID, not the Disease Object Id
     Disease.findOne({_id:_id}, (err, data)=> {
         if (err || !data){
             return res.json({Error: err});

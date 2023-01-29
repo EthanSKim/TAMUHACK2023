@@ -64,11 +64,6 @@ const getOneUsers = (req, res, next) => {
     })
 };
 
-// //POST '/users/:_id'
-// const newComment = (req, res, next) => {
-//     res.json({message: "POST 1 users comment"});
-// };
-
 //DELETE '/users/:_id'
 const deleteOneUsers = (req, res, next) => {
     let _id = req.params._id; 

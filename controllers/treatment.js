@@ -1,7 +1,7 @@
-//import treatement model
-const Treatment = require('../models/treatement');
+//import treatment model
+const Treatment = require('../models/treatment');
 
-//GET '/treatement'
+//GET '/treatment'
 const getAllTreatment = (req, res, next) => {
     Treatment.find({}, (err, data)=> {
         if (err || !data){
@@ -11,13 +11,13 @@ const getAllTreatment = (req, res, next) => {
     })
 };
 
-//POST '/treatement'
+//POST '/treatment'
 const newTreatment = (req, res) => {
-    //check if the treatement _id already exists in db
+    //check if the treatment _id already exists in db
     Treatment.findOne({ _id: req.body._id }, (err, data) => {
-        //if treatement not in db, add it
+        //if treatment not in db, add it
         if (!data) {
-            //create a new treatement object using the Treatment model and req.body
+            //create a new treatment object using the Treatment model and req.body
             const newTreatment = new Treatment({
                 name: req.body.name,
                 disease_id: req.body.disease_id,
@@ -36,7 +36,7 @@ const newTreatment = (req, res) => {
                 } 
                 return res.json(data);
             })
-        //if there's an error or the treatement is in db, return a message         
+        //if there's an error or the treatment is in db, return a message         
         }else{
             if(err){
                 return res.json(`Error in newTreatment POST ${err}`);
@@ -46,7 +46,7 @@ const newTreatment = (req, res) => {
     })    
 };
 
-//DELETE '/treatement'
+//DELETE '/treatment'
 const deleteAllTreatment = (req, res, next) => {
     Treatment.deleteMany({}, (err)=> {
         if (err){
@@ -56,7 +56,7 @@ const deleteAllTreatment = (req, res, next) => {
     })
 };
 
-//GET '/treatement/:_id'
+//GET '/treatment/:_id'
 const getOneTreatment = (req, res, next) => {
     let _id = req.params._id;
     
@@ -94,7 +94,7 @@ const newComment = (req, res, next) => {
 };
 
 
-//DELETE '/treatement/:_id'
+//DELETE '/treatment/:_id'
 const deleteOneTreatment = (req, res, next) => {
     let _id = req.params._id; 
 

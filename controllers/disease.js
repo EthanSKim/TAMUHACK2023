@@ -1,7 +1,7 @@
-//import treatement model
-const Disease = require('../models/treatement');
+//import disease model
+const Disease = require('../models/disease');
 
-//GET '/treatement'
+//GET '/disease'
 const getAllDisease = (req, res, next) => {
     Disease.find({}, (err, data)=> {
         if (err || !data){
@@ -11,13 +11,13 @@ const getAllDisease = (req, res, next) => {
     })
 };
 
-//POST '/treatement'
+//POST '/disease'
 const newDisease = (req, res) => {
-    //check if the treatement _id already exists in db
+    //check if the disease _id already exists in db
     Disease.findOne({ _id: req.body._id }, (err, data) => {
-        //if treatement not in db, add it
+        //if disease not in db, add it
         if (!data) {
-            //create a new treatement object using the Disease model and req.body
+            //create a new disease object using the Disease model and req.body
             const newDisease = new Disease({
                 name: req.body.name,
                 causes: req.body.causes,
@@ -37,7 +37,7 @@ const newDisease = (req, res) => {
                 } 
                 return res.json(data);
             })
-        //if there's an error or the treatement is in db, return a message         
+        //if there's an error or the disease is in db, return a message         
         }else{
             if(err){
                 return res.json(`Error in newDisease POST ${err}`);
@@ -47,7 +47,7 @@ const newDisease = (req, res) => {
     })    
 };
 
-//DELETE '/treatement'
+//DELETE '/disease'
 const deleteAllDisease = (req, res, next) => {
     Disease.deleteMany({}, (err)=> {
         if (err){
@@ -57,7 +57,7 @@ const deleteAllDisease = (req, res, next) => {
     })
 };
 
-//GET '/treatement/:_id'
+//GET '/disease/:_id'
 const getOneDisease = (req, res, next) => {
     let _id = req.params._id;
     
@@ -95,7 +95,7 @@ const newComment = (req, res, next) => {
 };
 
 
-//DELETE '/treatement/:_id'
+//DELETE '/disease/:_id'
 const deleteOneDisease = (req, res, next) => {
     let _id = req.params._id; 
 

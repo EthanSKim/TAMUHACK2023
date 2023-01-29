@@ -1,28 +1,72 @@
 import CalendarComponent from "@/Components/CalendarComponent";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function calendar() {
   const [dailyList, setDailyList] = useState([]);
+  const [events, setEvents] = useState([]);
   const [checkedState, setCheckedState] = useState([]);
   const [load, setLoad] = useState(true);
+  const today = new Date();
+  const currentDate =
+    today.getDate() + "-" + today.getMonth() + 1 + "-" + today.getFullYear();
 
-  let list = [
-    { task: "amoxicillin 40mg", time: "1 pill each morning", taken: 1 },
-    { task: "medicine 150mg", time: "2 pills each evening", taken: 0 },
-    { task: "drink water", time: "", taken: 1 },
+  let data = [
+    {
+      task: "amoxicillin 40mg",
+      time: "1 pill each morning",
+      taken: 1,
+      date: "1-29-2023",
+    },
+    {
+      task: "medicine 150mg",
+      time: "2 pills each evening",
+      taken: 0,
+      date: "1-29-2023",
+    },
+    { task: "drink water", time: "", taken: 1, date: "1-29-2023" },
   ];
 
+  const client = axios.create({
+    baseURL: "http://localhost:3001",
+  });
+
   useEffect(() => {
-    loadList();
+    loadEvents();
+    loadDailyList();
     loadChecks();
   }, []);
 
   useEffect(() => {
-    loadList();
+    loadEvents();
+    loadDailyList();
     loadChecks();
-  }, [load]);
+  }, [load, currentDate]);
 
-  function loadList() {
+  function loadEvents() {
+    let list = client.get("/events").then((res) => {
+      let dataList = [];
+      for (var i = 0; i < res.data.length; i++) {
+        dataList.push({
+          task: res.data[i].name,
+          time: res.data[i].dosage,
+          taken: res.data[i].taken,
+          date: res.data[i].date,
+        });
+      }
+      return dataList;
+    });
+    setEvents(data);
+  }
+
+  function loadDailyList() {
+    let list = events.map((event) => {
+      let dataList = [];
+      if (event.date === currentDate) {
+        dataList.push(event);
+      }
+      return dataList;
+    });
     setDailyList(list);
     setLoad(false);
   }

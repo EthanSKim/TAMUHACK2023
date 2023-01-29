@@ -13,18 +13,18 @@ export default function calendar() {
 
   let data = [
     {
-      task: "amoxicillin 40mg",
-      time: "1 pill each morning",
+      task: "Amoxicillin 40mg",
+      time: "Take twice per day",
       taken: 1,
       date: "1-29-2023",
     },
     {
-      task: "medicine 150mg",
-      time: "2 pills each evening",
+      task: "Mucinex 150mg",
+      time: "Take up to four times per day",
       taken: 0,
       date: "1-29-2023",
     },
-    { task: "drink water", time: "", taken: 1, date: "1-29-2023" },
+    { task: "Drink Plenty of Water", time: "", taken: 1, date: "1-29-2023" },
   ];
 
   const client = axios.create({
@@ -44,30 +44,30 @@ export default function calendar() {
   }, [load, currentDate]);
 
   function loadEvents() {
-    let list = client.get("/events").then((res) => {
-      let dataList = [];
-      for (var i = 0; i < res.data.length; i++) {
-        dataList.push({
-          task: res.data[i].name,
-          time: res.data[i].dosage,
-          taken: res.data[i].taken,
-          date: res.data[i].date,
-        });
-      }
-      return dataList;
-    });
+    // let list = client.get("/events").then((res) => {
+    //   let dataList = [];
+    //   for (var i = 0; i < res.data.length; i++) {
+    //     dataList.push({
+    //       task: res.data[i].name,
+    //       time: res.data[i].dosage,
+    //       taken: res.data[i].taken,
+    //       date: res.data[i].date,
+    //     });
+    //   }
+    //   return dataList;
+    // });
     setEvents(data);
   }
 
   function loadDailyList() {
-    let list = events.map((event) => {
-      let dataList = [];
-      if (event.date === currentDate) {
-        dataList.push(event);
-      }
-      return dataList;
-    });
-    setDailyList(list);
+    // let list = events.map((event) => {
+    //   let dataList = [];
+    //   if (event.date === currentDate) {
+    //     dataList.push(event);
+    //   }
+    //   return dataList;
+    // });
+    setDailyList(data);
     setLoad(false);
   }
 

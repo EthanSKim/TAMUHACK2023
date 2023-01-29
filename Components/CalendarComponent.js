@@ -21,7 +21,7 @@ function CalendarComponent() {
         localizer={localizer}
         defaultDate={today}
         defaultView="month"
-        events={eventsData}
+        events={events}
         style={{ height: "100vh" }}
       />
     </div>

@@ -1,5 +1,8 @@
 
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+const USER_KEY = "@user";
 
 /**
  * @swagger
@@ -11,6 +14,22 @@ import { useRouter } from "next/router";
 export default function NavBar() {
   const router = useRouter();
 
+  const [user, setUser] = useState(false);
+  const userOut = () => {
+    localStorage.clear();
+    setUser(false);
+    router.push("/");
+  }
+  const loadUser = () => {
+    const user = localStorage.getItem(USER_KEY);
+    if(user !== null) {
+      setUser(true);
+    }
+  }
+
+  useEffect(() => {
+    loadUser();
+  }, [])
   return (
     <nav className="navbar navbar-expand-xxl bg-light py-2 px-4">
       <div className="container-fluid">
@@ -35,23 +54,28 @@ export default function NavBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className={router.pathname === "/diagnosis" ? "nav-link active" : "nav-link"} href="/diagnosis">
+              <a className={router.pathname === "/diagnosis" ? "nav-link active" : "nav-link"} href={user ? "/diagnosis" : "/login"}>
                 Diagnosis
               </a>
             </li>
             <li className="nav-item">
-              <a className={router.pathname === "/calendar" ? "nav-link active" : "nav-link"} href="/calendar">
+              <a className={router.pathname === "/calendar" ? "nav-link active" : "nav-link"} href={user ? "/calendar" : "/login"}>
                 Calendar
               </a>
             </li>
           </ul>
-          {router.pathname === "/login" ? (
+          {user ? (
+            <button className="btn btn-outline-dark fs-5" onClick={userOut}>
+              Logout
+            </button>
+          ) : (router.pathname === "/login" ? (
             ""
           ) : (
             <a className="btn btn-outline-dark fs-5" href="/login">
               Login
             </a>
-          )}
+          ))}
+          
         </div>
       </div>
     </nav>

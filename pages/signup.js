@@ -1,8 +1,11 @@
 export default function signup() {
+  const signUser = () => {
+    
+  }
   return (
     <div className="w-25 mx-auto" style={{ marginTop: "10em" }}>
       <main className="form-signin w-100 m-auto text-center">
-        <form>
+        <form onSubmit={signUser}>
           <h1 className="h3 mb-3 fw-normal">Please create an account</h1>
 
           <div className="form-floating mb-3">

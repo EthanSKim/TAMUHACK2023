@@ -10,13 +10,16 @@ const localizer = momentLocalizer(moment);
 
 function CalendarComponent() {
   const [eventsData, setEventsData] = useState(events);
+  const today = new Date()
+  const currentDate = today.getDate() + '-' + today.getMonth()+1 + '-' + today.getFullYear();
 
   return (
     <div suppressHydrationWarning>
+      <h1>Current Date: {currentDate}</h1>
       <Calendar
         views={["day", "agenda", "work_week", "month"]}
         localizer={localizer}
-        defaultDate={new Date()}
+        defaultDate={today}
         defaultView="month"
         events={eventsData}
         style={{ height: "100vh" }}

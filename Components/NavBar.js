@@ -1,5 +1,5 @@
-import Link from "next/link";
-import Router, { useRouter } from "next/router";
+
+import { useRouter } from "next/router";
 
 /**
  * @swagger
@@ -29,17 +29,17 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
             <li className="nav-item">
-              <a className="nav-link active" href="/">
+              <a className={router.pathname === "/" ? "nav-link active" : "nav-link"} href="/">
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/diagnosis">
+              <a className={router.pathname === "/diagnosis" ? "nav-link active" : "nav-link"} href="/diagnosis">
                 Diagnosis
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/calendar">
+              <a className={router.pathname === "/calendar" ? "nav-link active" : "nav-link"} href="/calendar">
                 Calendar
               </a>
             </li>

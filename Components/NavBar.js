@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
  */
 export default function NavBar() {
   const router = useRouter();
+
   return (
     <nav className="navbar navbar-expand-xxl bg-light py-2 px-4">
       <div className="container-fluid">
@@ -44,9 +45,9 @@ export default function NavBar() {
               </a>
             </li>
           </ul>
-          <button className="btn btn-outline-dark" type="submit">
+          <a className="btn btn-outline-dark fs-5" href="/login">
             Login
-          </button>
+          </a>
         </div>
       </div>
     </nav>

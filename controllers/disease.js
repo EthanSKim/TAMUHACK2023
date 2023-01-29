@@ -1,6 +1,12 @@
 //import disease model
 const Disease = require('../models/disease');
 
+//import treatment model
+const Treatment = require('../models/treatment');
+
+//import users model
+const Users = require('../models/users');
+
 //GET '/disease'
 const getAllDisease = (req, res, next) => {
     Disease.find({}, (err, data)=> {
@@ -11,8 +17,10 @@ const getAllDisease = (req, res, next) => {
     })
 };
 
-//POST '/disease'
+//POST '/disease/:user_id'
 const newDisease = (req, res) => {
+    let user_id = req.params.user_id;
+
     //check if the disease _id already exists in db
     Disease.findOne({ _id: req.body._id }, (err, data) => {
         //if disease not in db, add it
@@ -26,7 +34,7 @@ const newDisease = (req, res) => {
                 start_date: req.body.start_date,
                 end_date: req.body.end_date,
                 comments: req.body.comments,
-                user_id: req.body.user_id
+                user_id: user_id
             })
 
             // save this object to database

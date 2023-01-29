@@ -4,11 +4,11 @@ const mongoose = require("mongoose"); //import mongoose
 const DiseaseSchema = new mongoose.Schema({
     name: String,
     causes: String,
-    symptoms: Array,
+    symptoms: String,
     desc: String,
     start_date: Date,
     end_date: Date,
-    comments: Array,
+    comments: [String],
     user_id: Number
 });
 

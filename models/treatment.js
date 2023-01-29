@@ -8,7 +8,7 @@ const TreatmentSchema = new mongoose.Schema({
     dosage: String,
     frequency: String,
     side_effects: String,
-    comments: Array
+    comments: [String]
 });
 
 const Treatment = mongoose.model('Treatment', TreatmentSchema); //convert to model named Treatment

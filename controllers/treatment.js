@@ -1,16 +1,39 @@
-const mongoose = require("mongoose"); //import mongoose
+//GET '/treatment'
+const getAllTreatment = (req, res, next) => {
+    res.json({message: "GET all treatment"});
+};
 
-// Treatment schema
-const TreatmentSchema = new mongoose.Schema({
-    id: {type:Number, required:true},
-    name: String,
-    disease_id: Number,
-    uses: String,
-    dosage: String,
-    frequency: String,
-    side_effects: String,
-    comments: String
-});
+//POST '/treatment'
+const newTreatment = (req, res, next) => {
+    res.json({message: "POST new treatment"});
+};
 
-const Treatment = mongoose.model('Treatment', TreatmentSchema); //convert to model named Treatment
-module.exports = Treatment; //export for controller use
+//DELETE '/treatment'
+const deleteAllTreatment = (req, res, next) => {
+    res.json({message: "DELETE all treatment"});
+};
+
+//GET '/treatment/:id'
+const getOneTreatment = (req, res, next) => {
+    res.json({message: "GET 1 treatment"});
+};
+
+//POST '/treatment/:id'
+const newComment = (req, res, next) => {
+    res.json({message: "POST 1 treatment comment"});
+};
+
+//DELETE '/treatment/:id'
+const deleteOneTreatment = (req, res, next) => {
+    res.json({message: "DELETE 1 treatment"});
+};
+
+//export controller functions
+module.exports = {
+    getAllTreatment, 
+    newTreatment,
+    deleteAllTreatment,
+    getOneTreatment,
+    newComment,
+    deleteOneTreatment
+};

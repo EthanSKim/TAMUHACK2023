@@ -1,13 +1,39 @@
-const mongoose = require("mongoose"); //import mongoose
+//GET '/users'
+const getAllUsers = (req, res, next) => {
+    res.json({message: "GET all users"});
+};
 
-// Treatment schema
-const TreatmentSchema = new mongoose.Schema({
-    id: {type:Number, required:true},
-    email: String,
-    username: String,
-    password: String,
-    user_type: String // 0 Admin, 1 Doctor, 2 Patient
-});
+//POST '/users'
+const newUsers = (req, res, next) => {
+    res.json({message: "POST new users"});
+};
 
-const Treatment = mongoose.model('Treatment', TreatmentSchema); //convert to model named Treatment
-module.exports = Treatment; //export for controller use
+//DELETE '/users'
+const deleteAllUsers = (req, res, next) => {
+    res.json({message: "DELETE all users"});
+};
+
+//GET '/users/:id'
+const getOneUsers = (req, res, next) => {
+    res.json({message: "GET 1 users"});
+};
+
+//POST '/users/:id'
+const newComment = (req, res, next) => {
+    res.json({message: "POST 1 users comment"});
+};
+
+//DELETE '/users/:id'
+const deleteOneUsers = (req, res, next) => {
+    res.json({message: "DELETE 1 users"});
+};
+
+//export controller functions
+module.exports = {
+    getAllUsers, 
+    newUsers,
+    deleteAllUsers,
+    getOneUsers,
+    newComment,
+    deleteOneUsers
+};

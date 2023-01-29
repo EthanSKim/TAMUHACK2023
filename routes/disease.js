@@ -1,17 +1,15 @@
-const mongoose = require("mongoose"); //import mongoose
+const express = require('express'); //import express
+const router  = express.Router(); 
+const diseaseController = require('../controllers/disease'); 
+const multer = require('multer');
+const upload = multer();
 
-// disease schema
-const DiseaseSchema = new mongoose.Schema({
-    id: {type:Number, required:true},
-    name: String,
-    causes: String,
-    symptoms: Array,
-    desc: String,
-    start_date: Date,
-    end_date: Date,
-    comments: String,
-    user_id: Number
-});
+router.get('/disease', diseaseController.getAllDisease); 
+router.post('/disease', upload.none(), diseaseController.newDisease); 
+router.delete('/disease', diseaseController.deleteAllDisease); 
 
-const Disease = mongoose.model('Disease', DiseaseSchema); //convert to model named Disease
-module.exports = Disease; //export for controller use
+router.get('/disease/:id', diseaseController.getOneDisease);
+router.post('/disease/:id', upload.none(), diseaseController.newComment);
+router.delete('/disease/:id', diseaseController.deleteOneDisease);
+
+module.exports = router; // export to use in server.js

@@ -1,13 +1,13 @@
-const mongoose = require("mongoose"); //import mongoose
+const express = require('express'); //import express
+const router  = express.Router(); 
+const usersController = require('../controllers/users'); 
 
-// Treatment schema
-const TreatmentSchema = new mongoose.Schema({
-    id: {type:Number, required:true},
-    email: String,
-    username: String,
-    password: String,
-    user_type: String // 0 Admin, 1 Doctor, 2 Patient
-});
+router.get('/users', usersController.getAllUsers); 
+router.post('/users', usersController.newUsers); 
+router.delete('/users', usersController.deleteAllUsers); 
 
-const Treatment = mongoose.model('Treatment', TreatmentSchema); //convert to model named Treatment
-module.exports = Treatment; //export for controller use
+router.get('/users/:id', usersController.getOneUsers);
+router.post('/users/:id', usersController.newComment);
+router.delete('/users/:id', usersController.deleteOneUsers);
+
+module.exports = router; // export to use in server.js

@@ -1,31 +1,87 @@
+//import users model
+const Users = require('../models/users');
+
 //GET '/users'
 const getAllUsers = (req, res, next) => {
-    res.json({message: "GET all users"});
+    Users.find({}, (err, data)=> {
+        if (err || !data){
+            return res.json({Error: err});
+        }
+        return res.json(data);
+    })
 };
 
 //POST '/users'
-const newUsers = (req, res, next) => {
-    res.json({message: "POST new users"});
+const newUsers = (req, res) => {
+    //check if the users _id already exists in db
+    Users.findOne({ _id: req.body._id }, (err, data) => {
+        //if users not in db, add it
+        if (!data) {
+            //create a new users object using the Users model and req.body
+            const newUsers = new Users({
+                email: req.body.email,
+                password: req.body.password,
+                user_type: req.body.user_type
+            })
+
+            // save this object to database
+            newUsers.save((err, data)=>{
+                if(err){
+                    console.log(data._id);
+                    return res.json({Error: err});
+                } 
+                return res.json(data);
+            })
+        //if there's an error or the users is in db, return a message         
+        }else{
+            if(err){
+                return res.json(`Error in newUsers POST ${err}`);
+            }
+            return res.json({message:"Users already exists"});
+        }
+    })    
 };
 
 //DELETE '/users'
 const deleteAllUsers = (req, res, next) => {
-    res.json({message: "DELETE all users"});
+    Users.deleteMany({}, (err)=> {
+        if (err){
+            return res.json({Error: err});
+        }
+        return res.json("Deleted all Users");
+    })
 };
 
-//GET '/users/:id'
+//GET '/users/:_id'
 const getOneUsers = (req, res, next) => {
-    res.json({message: "GET 1 users"});
+    let _id = req.params._id;
+    
+    Users.findOne({_id:_id}, (err, data)=> {
+        if (err || !data){
+            return res.json({Error: err});
+        }
+        return res.json(data);
+    })
 };
 
-//POST '/users/:id'
-const newComment = (req, res, next) => {
-    res.json({message: "POST 1 users comment"});
-};
+// //POST '/users/:_id'
+// const newComment = (req, res, next) => {
+//     res.json({message: "POST 1 users comment"});
+// };
 
-//DELETE '/users/:id'
+//DELETE '/users/:_id'
 const deleteOneUsers = (req, res, next) => {
-    res.json({message: "DELETE 1 users"});
+    let _id = req.params._id; 
+
+    Users.deleteOne({_id:_id}, (err,data)=> {
+        if (data.deletedCount == 0){
+            return res.json({message: "User doesn't exist."});
+        } else if (err) {
+            return res.json({Error: err});
+        } else {
+            return res.json({message: "User deleted."});
+        }
+    })
 };
 
 //export controller functions
@@ -34,6 +90,6 @@ module.exports = {
     newUsers,
     deleteAllUsers,
     getOneUsers,
-    newComment,
     deleteOneUsers
 };
+

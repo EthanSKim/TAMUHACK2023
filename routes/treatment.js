@@ -1,6 +1,8 @@
 const express = require('express'); //import express
 const router  = express.Router(); 
 const treatmentController = require('../controllers/treatment'); 
+const multer = require('multer');
+const upload = multer();
 
 router.get('/treatment', treatmentController.getAllTreatment); 
 router.post('/treatment', treatmentController.newTreatment); 

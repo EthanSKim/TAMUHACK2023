@@ -3,37 +3,28 @@ import DiagnosisCard from "@/Components/DiagnosisCard";
 export default function diagnosis() {
   const diagnosises = [
     {
-      name: "Disease",
+      name: "Pneumonia",
       treatments: [
-        ["1", "medicine A", "Twice daily"],
-        ["2", "medicine B", "Two pills each morning"],
+        ["1", "Amoxicillin", "Take twice per day"],
+        ["2", "Mucinex", "Take up to four times per day"],
+        ["3", "Drink Plenty of Water", "As often as you're thirsty, and when taking medication"],
       ],
       symptoms: ["cough", "cold", "Runny Nose"],
       description:
-        "Uh oh! someone ate the mushrooms they found in the forest. quod memor sis ad communia sunt ab initio minima. Quod si, exempli",
-      date: ["2/31/2023", "2/31/99"],
+        "Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus (purulent material), causing cough with phlegm or pus, fever, chills, and difficulty breathing. A variety of organisms, including bacteria, viruses and fungi, can cause pneumonia.",
+      date: ["1-28-2023", "2-15-2023"],
     },
     {
-      name: "Broken Femur",
+      name: "Knee Injury",
       treatments: [
-        ["1", "medicine A", "Twice daily"],
-        ["2", "medicine B", "Two pills each morning"],
+        ["1", "Hydrocodone", "Up to twice per day as needed"],
+        ["2", "Change Bandages", "Once per day"],
+        ["3", "Gentle Exercises	", "Once per day"],
       ],
-      symptoms: ["cough", "cold", "Runny Nose"],
+      symptoms: ["Pain", "Difficulty Walking"],
       description:
-        "Uh oh! someone ate the mushrooms they found in the forest. quod memor sis ad communia sunt ab initio minima. Quod si, exempli",
-      date: ["2/31/2023", "2/31/99"],
-    },
-    {
-      name: "Broken leg",
-      treatments: [
-        ["1", "medicine A", "Twice daily"],
-        ["2", "medicine B", "Two pills each morning"],
-      ],
-      symptoms: ["cough", "cold", "Runny Nose"],
-      description:
-        "Uh oh! someone ate the mushrooms they found in the forest. quod memor sis ad communia sunt ab initio minima. Quod si, exempli",
-      date: ["2/31/2023", "2/31/99"],
+        "Torn Anterior cruciate ligament",
+      date: ["1-5-2023", "3-1-2023"],
     },
   ];
 

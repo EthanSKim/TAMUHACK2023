@@ -64,7 +64,7 @@ export default function NavBar() {
                     : "nav-link"
                 }
                 href={user ? "/diagnosis" : "/login"}>
-                Diagnosis
+                Diagnoses
               </a>
             </li>
             <li className="nav-item">
